@@ -4,7 +4,7 @@ CREATE TABLE IF NOT EXISTS t_users
 (
     id     SERIAL PRIMARY KEY NOT NULL,
     c_name VARCHAR(50)        NOT NULL,
-    c_age  INTEGER CHECK ( c_age > 0 AND c_age < 100 ),
+    c_age  INTEGER NOT NULL CHECK  ( c_age > 17 AND c_age < 100 ),
     c_passport_id INTEGER UNIQUE,
     FOREIGN KEY (c_passport_id) REFERENCES t_passports(id)
 
