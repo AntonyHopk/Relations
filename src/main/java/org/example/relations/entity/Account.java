@@ -1,16 +1,14 @@
 package org.example.relations.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
+import lombok.*;
 
 @Data
 @RequiredArgsConstructor
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@Builder
 @Table(schema = "users_schema", name = "t_accounts")
 public class Account {
     @Id
