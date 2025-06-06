@@ -4,7 +4,7 @@ WORKDIR ${APP_DIR}
 COPY pom.xml .
 RUN mvn verify --fail-never
 COPY src/ ./src
-RUN mvn package -DskipTests=true
+RUN mvn clean package -DskipTests=true
 
 FROM bellsoft/liberica-openjdk-alpine AS prod
 ENV APP_DIR=/opt/app
