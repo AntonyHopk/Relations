@@ -4,8 +4,6 @@ import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
-import org.example.relations.entity.Account;
-import org.example.relations.entity.Hobby;
 import org.example.relations.entity.Passport;
 
 import java.util.List;

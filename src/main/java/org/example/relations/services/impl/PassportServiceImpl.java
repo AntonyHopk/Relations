@@ -5,7 +5,6 @@ import org.example.relations.DTO.PassportDTO;
 import org.example.relations.entity.Passport;
 import org.example.relations.repositories.PassportRepository;
 import org.example.relations.services.PassportService;
-import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
