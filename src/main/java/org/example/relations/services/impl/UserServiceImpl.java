@@ -23,7 +23,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserDTO create(UserDTO user) {
         Set<Hobby> hobbies = user.hobbies().stream()
-                .map(name->hobbyRepository.findByName(name)
+                .map(name->hobbyRepository.findByType(name)
                         .orElseGet(()->hobbyRepository.save(Hobby.builder().type(name).build())))
                 .collect(Collectors.toSet());
 
