@@ -13,12 +13,12 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/Account")
+@RequestMapping("/api/accounts")
 @Tag(name = "Account API", description = "CRUD операции для аккаунта")
 public class AccountController {
     private final AccountService AccountService;
 
-    @Operation(summary = "Find all Accounts", tags = {"Account"}, description = "Find all Accounts for users", responses = {
+    @Operation(summary = "Find all Accounts",  description = "Find all Accounts for users", responses = {
             @ApiResponse(responseCode = "200", description = "Accounts found successfully")
     })
     @GetMapping
@@ -26,7 +26,7 @@ public class AccountController {
         return ResponseEntity.ok().body(AccountService.getAll());
     }
 
-    @Operation(summary = "Find Account", tags = {"Account"}, description = "Find Account by id", responses = {
+    @Operation(summary = "Find Account",  description = "Find Account by id", responses = {
             @ApiResponse(responseCode = "200", description = "Account was found successfully"),
             @ApiResponse(responseCode = "404", description = "Account not found")})
     @GetMapping("/{id}")
@@ -34,7 +34,7 @@ public class AccountController {
         return ResponseEntity.ok().body(AccountService.getById(id));
     }
 
-    @Operation(summary = "Create Account", tags = {"Account"}, description = "Create new Account for users", responses = {
+    @Operation(summary = "Create Account", description = "Create new Account for users", responses = {
             @ApiResponse(responseCode = "200", description = "Account was created successfully"),
             @ApiResponse(responseCode = "400", description = "Bad request")
     })
@@ -43,7 +43,7 @@ public class AccountController {
         return ResponseEntity.ok().body(AccountService.create(AccountDTO));
     }
 
-    @Operation(summary = "Update Account", tags = {"Account"}, description = "Update Account by id", responses = {
+    @Operation(summary = "Update Account",  description = "Update Account by id", responses = {
             @ApiResponse(responseCode = "200", description = "Account was updated successfully"),
             @ApiResponse(responseCode = "404", description = "Account not found")})
     @PutMapping("/{id}")
@@ -51,7 +51,7 @@ public class AccountController {
         return ResponseEntity.ok().body(AccountService.update(id, AccountDTO));
     }
 
-    @Operation(summary = "Delete Account", tags = {"Account"}, description = "Delete Account by id", responses = {
+    @Operation(summary = "Delete Account", description = "Delete Account by id", responses = {
             @ApiResponse(responseCode = "200", description = "Account was deleted successfully"),
             @ApiResponse(responseCode = "404", description = "Account not found")})
     @DeleteMapping("/{id}")

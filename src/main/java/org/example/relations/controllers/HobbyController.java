@@ -13,12 +13,12 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/Hobby")
+@RequestMapping("/api/hobbies")
 @Tag(name = "Hobby API", description = "CRUD операции для хобби")
 public class HobbyController {
     private final HobbyService HobbyService;
 
-    @Operation(summary = "Find all Hobbys", tags = {"Hobby"}, description = "Find all Hobbys for users", responses = {
+    @Operation(summary = "Find all Hobbys",  description = "Find all Hobbys for users", responses = {
             @ApiResponse(responseCode = "200", description = "Hobbys found successfully")
     })
     @GetMapping
@@ -26,7 +26,7 @@ public class HobbyController {
         return ResponseEntity.ok().body(HobbyService.getAll());
     }
 
-    @Operation(summary = "Find Hobby", tags = {"Hobby"}, description = "Find Hobby by id", responses = {
+    @Operation(summary = "Find Hobby",  description = "Find Hobby by id", responses = {
             @ApiResponse(responseCode = "200", description = "Hobby was found successfully"),
             @ApiResponse(responseCode = "404", description = "Hobby not found")})
     @GetMapping("/{id}")
@@ -34,7 +34,7 @@ public class HobbyController {
         return ResponseEntity.ok().body(HobbyService.getById(id));
     }
 
-    @Operation(summary = "Create Hobby", tags = {"Hobby"}, description = "Create new Hobby for users", responses = {
+    @Operation(summary = "Create Hobby",  description = "Create new Hobby for users", responses = {
             @ApiResponse(responseCode = "200", description = "Hobby was created successfully"),
             @ApiResponse(responseCode = "400", description = "Bad request")
     })
@@ -43,7 +43,7 @@ public class HobbyController {
         return ResponseEntity.ok().body(HobbyService.create(HobbyDTO));
     }
 
-    @Operation(summary = "Update Hobby", tags = {"Hobby"}, description = "Update Hobby by id", responses = {
+    @Operation(summary = "Update Hobby",  description = "Update Hobby by id", responses = {
             @ApiResponse(responseCode = "200", description = "Hobby was updated successfully"),
             @ApiResponse(responseCode = "404", description = "Hobby not found")})
     @PutMapping("/{id}")
@@ -51,7 +51,7 @@ public class HobbyController {
         return ResponseEntity.ok().body(HobbyService.update(id, HobbyDTO));
     }
 
-    @Operation(summary = "Delete Hobby", tags = {"Hobby"}, description = "Delete Hobby by id", responses = {
+    @Operation(summary = "Delete Hobby",  description = "Delete Hobby by id", responses = {
             @ApiResponse(responseCode = "200", description = "Hobby was deleted successfully"),
             @ApiResponse(responseCode = "404", description = "Hobby not found")})
     @DeleteMapping("/{id}")

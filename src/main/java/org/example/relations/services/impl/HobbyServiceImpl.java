@@ -1,5 +1,6 @@
 package org.example.relations.services.impl;
 
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.example.relations.DTO.HobbyDTO;
 import org.example.relations.entity.Hobby;
@@ -12,6 +13,7 @@ import java.util.NoSuchElementException;
 
 @Service
 @RequiredArgsConstructor
+@Transactional
 public class HobbyServiceImpl implements HobbyService {
     private final HobbyRepository repository;
 

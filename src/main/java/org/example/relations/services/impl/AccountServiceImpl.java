@@ -1,5 +1,6 @@
 package org.example.relations.services.impl;
 
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.example.relations.DTO.AccountDTO;
 import org.example.relations.entity.Account;
@@ -12,6 +13,7 @@ import java.util.NoSuchElementException;
 
 @Service
 @RequiredArgsConstructor
+@Transactional
 public class AccountServiceImpl implements AccountService {
     private final AccountRepository repository;
 

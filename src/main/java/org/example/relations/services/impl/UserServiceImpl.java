@@ -1,5 +1,6 @@
 package org.example.relations.services.impl;
 
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.example.relations.DTO.UserDTO;
 import org.example.relations.entity.Hobby;
@@ -17,6 +18,7 @@ import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
+@Transactional
 public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
     private final HobbyRepository hobbyRepository;
