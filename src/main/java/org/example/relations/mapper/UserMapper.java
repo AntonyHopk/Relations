@@ -23,35 +23,27 @@ public class UserMapper {
         passport.setNumber(dto.passport().getNumber());
         user.setPassport(passport);
 
+        user.setHobbies(Set.copyOf(hobbies));
         if (dto.accounts() != null) {
             List<Account> accountList = dto.accounts().stream().map(acc -> {
                 Account a = new Account();
                 a.setTitle(acc.title());
-                a.setUser(user);
                 return a;
             }).collect(Collectors.toList());
+
+            accountList.forEach(acc -> acc.setUser(user));
+
             user.setAccounts(accountList);
         }
 
-        user.setHobbies(Set.copyOf(hobbies));
         return user;
     }
 
     public static UserDTO toDto(User user) {
-        List<AccountDTO> accountDtos = user.getAccounts().stream()
-                .map(a -> new AccountDTO(a.getTitle()))
-                .toList();
+        List<AccountDTO> accountDtos = user.getAccounts().stream().map(a -> new AccountDTO(a.getTitle())).toList();
 
-        Set<String> hobbyNames = user.getHobbies().stream()
-                .map(Hobby::getType)
-                .collect(Collectors.toSet());
+        Set<String> hobbyNames = user.getHobbies().stream().map(Hobby::getType).collect(Collectors.toSet());
 
-        return new UserDTO(
-                user.getName(),
-                user.getAge(),
-                user.getPassport(),
-                accountDtos,
-                hobbyNames
-        );
+        return new UserDTO(user.getName(), user.getAge(), user.getPassport(), accountDtos, hobbyNames);
     }
 }
