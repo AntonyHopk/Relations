@@ -26,17 +26,17 @@ public class User {
     int age;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name="c_passport_id",referencedColumnName = "id")
-     Passport passport;
+    @JoinColumn(name = "c_passport_id", referencedColumnName = "id")
+    Passport passport;
 
     @ManyToMany
-    @JoinTable(
-            name="t_users_hobbies",
-            joinColumns = @JoinColumn(name="c_user_id"),
-            inverseJoinColumns = @JoinColumn(name="c_hobby_id")
+    @JoinTable(schema = "users_schema",
+            name = "t_users_hobbies",
+            joinColumns = @JoinColumn(name = "c_user_id"),
+            inverseJoinColumns = @JoinColumn(name = "c_hobby_id")
     )
     Set<Hobby> hobbies;
 
-    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     List<Account> accounts;
 }
