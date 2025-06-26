@@ -26,11 +26,15 @@ public class AuthController {
         authService.register(registerRequest);
         return ResponseEntity.ok("Register was successfully");
     }
+
     @Operation(summary = "Login",  description = "Login for what?", responses = {
             @ApiResponse(responseCode = "200", description = "Login successfully")
     })
-    @GetMapping("/login")
-    public ResponseEntity<?> login(Authentication authentication) {
-        return ResponseEntity.ok("Login was successful " + authentication.getName());
+    @GetMapping("/me")
+    public ResponseEntity<?> whoAmI(Authentication authentication) {
+        if (authentication == null || !authentication.isAuthenticated()) {
+            return ResponseEntity.status(401).body("Not authenticated");
+        }
+        return ResponseEntity.ok("Current user: " + authentication.getName());
     }
 }
