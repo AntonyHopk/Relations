@@ -33,7 +33,7 @@ public class AuthServiceImpl implements AuthService {
         credential.setPassword(passwordEncoder.encode(registerRequest.password()));
         credential.setRole(role);
         credential.setUser(user);
-        userRepository.save(user);
+//        userRepository.save(user);
         credentialsRepository.save(credential);
     }
 }
