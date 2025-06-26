@@ -30,7 +30,7 @@ public class AuthController {
             @ApiResponse(responseCode = "200", description = "Login successfully")
     })
     @GetMapping("/login")
-    public ResponseEntity<?> login(@RequestBody Authentication authentication) {
+    public ResponseEntity<?> login(Authentication authentication) {
         return ResponseEntity.ok("Login was successful " + authentication.getName());
     }
 }
