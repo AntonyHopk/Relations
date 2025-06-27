@@ -1,5 +1,6 @@
 package org.example.relations.config;
 
+import jakarta.servlet.http.HttpServletResponse;
 import org.example.relations.entity.Credentials;
 import org.example.relations.repositories.CredentialsRepository;
 import org.springframework.context.annotation.Bean;
@@ -41,11 +42,20 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/auth/register", "/swagger-ui/**", "/v3/api-docs/**","/swagger-resources","/webjars","/swagger-ui.html").permitAll()
+                        .requestMatchers("/api/auth/register", "/swagger-ui/**", "/v3/api-docs/**","/swagger-resources").permitAll()
                         .requestMatchers("/api/users/**").hasRole("USER")
                         .anyRequest().authenticated()
                 )
-                .httpBasic(Customizer.withDefaults());
+                .httpBasic(Customizer.withDefaults())
+                .logout(logout -> logout
+                        .logoutUrl("/logout")
+                        .logoutSuccessHandler((request, response, authentication) -> {
+                            response.setStatus(HttpServletResponse.SC_OK);
+                            response.getWriter().write("Logout successful");
+                        })
+                );
+
+
         return http.build();
     }
 
