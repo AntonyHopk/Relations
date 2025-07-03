@@ -19,6 +19,7 @@ server:
 logging:
   level:
     sql: info
+    org.springframework.security: DEBUG
 jwt:
   secret: 8dc3e0e6fe23d1c4be967fbf11c960ea70189b42e1f0b15723e1a68a2c142b6b
 
