@@ -21,5 +21,5 @@ logging:
     sql: info
     org.springframework.security: DEBUG
 jwt:
-  secret: 8dc3e0e6fe23d1c4be967fbf11c960ea70189b42e1f0b15723e1a68a2c142b6bw4eT@!Dm4p2r8YnzF&kq$g93Lm7cZxNp0QsVeT!G@w8FzRuKbYtLpXrUoAsDqZh6J
+  secret: 8dc3e0e6fe23d1c4be967fbf11c960ea70189b42e1f0b15723e1a68a2c142b6bw4eTsDqZh6J8dc3e0e6fe23d1cb6bw4eTsDqZh6J
 
