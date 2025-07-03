@@ -12,7 +12,7 @@ import java.util.Date;
 public class JwtUtils {
     @Value("${jwt.secret}")
     String jwtSecret;
-    private final long accessTokenExpiresIn = 60000 * 15; //1000 * 60 *15
+    private final long accessTokenExpiresIn = 60000 * 3; //1000 * 60 *15
     private final long refreshTokenExpiresIn = 60000 * 60 * 24;
 
     public String generateAccessToken(String username) {
